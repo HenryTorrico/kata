@@ -2,26 +2,33 @@ package parrot;
 
 public class NorwegianBlue implements ParrotType{
 
-	@Override
+
+	private double voltage;
+	private boolean isNailed;
+	private double baseSpeed;
+
 	public double getSpeed(double voltage) {
-		Math.min(24.0, voltage*getSpeed());
-		return 0;
+		
+		return Math.min(24.0, voltage*baseSpeed);
 	}
 
+	
+	NorwegianBlue(boolean isNailed, double voltage,double baseSpeed) {
+		this.voltage=voltage;
+		this.isNailed=isNailed;
+		this.baseSpeed=baseSpeed;
+    	System.out.println(voltage);
+    	System.out.println(isNailed);
+    	System.out.println(baseSpeed);
+
+	
+	}
+	
+	
+
 	@Override
-	public double getSpeed(boolean isNailed, double voltage) {
+	public double getTotalSpeed() {
 		return (isNailed) ? 0 : getSpeed(voltage);
-	}
-
-	@Override
-	public double getSpeed(int numberOfCoconuts) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getSpeed() {
-		return 12.0;
 	}
 
 }
